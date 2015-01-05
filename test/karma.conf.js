@@ -30,7 +30,12 @@ module.exports = function(config) {
     ],
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: [
+      'app/scripts/agency/agency.js', 
+      'app/scripts/agency/bootstrap.js',
+      'app/scripts/agency/bootstrap.min.js',
+      'app/scripts/agency/contact_me.js',
+      'app/scripts/agency/jqBootstrapValidation.js'],
 
     // web server port
     port: 8080,
