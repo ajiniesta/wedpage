@@ -172,44 +172,44 @@ module.exports = function (grunt) {
     },
 
     // Renames files for browser caching purposes
-    filerev: {
-      dist: {
-        src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
-        ]
-      }
-    },
+    // filerev: {
+    //   dist: {
+    //     src: [
+    //       '<%= yeoman.dist %>/scripts/{,*/}*.js',
+    //       '<%= yeoman.dist %>/styles/{,*/}*.css',
+    //       '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+    //       '<%= yeoman.dist %>/styles/fonts/*'
+    //     ]
+    //   }
+    // },
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
-    useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>',
-        flow: {
-          html: {
-            steps: {
-              js: ['concat', 'uglifyjs'],
-              css: ['cssmin']
-            },
-            post: {}
-          }
-        }
-      }
-    },
+    // useminPrepare: {
+    //   html: '<%= yeoman.app %>/index.html',
+    //   options: {
+    //     dest: '<%= yeoman.dist %>',
+    //     flow: {
+    //       html: {
+    //         steps: {
+    //           js: ['concat', 'uglifyjs'],
+    //           css: ['cssmin']
+    //         },
+    //         post: {}
+    //       }
+    //     }
+    //   }
+    // },
 
     // Performs rewrites based on filerev and the useminPrepare configuration
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
-      }
-    },
+    // usemin: {
+    //   html: ['<%= yeoman.dist %>/{,*/}*.html'],
+    //   css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+    //   options: {
+    //     assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
+    //   }
+    // },
 
     // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
@@ -233,70 +233,70 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // concat: {
-    //   dist: {}
+    concat: {
+      dist: {}
+    },
+
+    // imagemin: {
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.app %>/images',
+    //       src: '{,*/}*.{png,jpg,jpeg,gif}',
+    //       dest: '<%= yeoman.dist %>/images'
+    //     }]
+    //   }
     // },
 
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
+    // svgmin: {
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.app %>/images',
+    //       src: '{,*/}*.svg',
+    //       dest: '<%= yeoman.dist %>/images'
+    //     }]
+    //   }
+    // },
 
-    svgmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
+    // htmlmin: {
+    //   dist: {
+    //     options: {
+    //       collapseWhitespace: true,
+    //       conservativeCollapse: true,
+    //       collapseBooleanAttributes: true,
+    //       removeCommentsFromCDATA: true,
+    //       removeOptionalTags: true
+    //     },
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.dist %>',
+    //       src: ['*.html', 'views/{,*/}*.html'],
+    //       dest: '<%= yeoman.dist %>'
+    //     }]
+    //   }
+    // },
 
     // ngmin tries to make the code safe for minification automatically by
     // using the Angular long form for dependency injection. It doesn't work on
     // things like resolve or inject so those have to be done manually.
-    ngmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
-        }]
-      }
-    },
+    // ngmin: {
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '.tmp/concat/scripts',
+    //       src: '*.js',
+    //       dest: '.tmp/concat/scripts'
+    //     }]
+    //   }
+    // },
 
     // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
+    // cdnify: {
+    //   dist: {
+    //     html: ['<%= yeoman.dist %>/*.html']
+    //   }
+    // },
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -311,8 +311,11 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
+            'images/{,*/}*',
+            'fonts/*',
+            'font-awesome-4.1.0/{*,/}*',
+            'styles/{*,/}*',
+            'scripts/{*,/}*'
           ]
         }, {
           expand: true,
@@ -339,8 +342,8 @@ module.exports = function (grunt) {
       ],
       dist: [
         'copy:styles',
-        'imagemin',
-        'svgmin'
+        // 'imagemin',
+        // 'svgmin'
       ]
     },
 
@@ -385,18 +388,18 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    'useminPrepare',
+    // 'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
+    // 'ngmin',
     'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'filerev',
-    'usemin',
-    'htmlmin'
+    // 'cdnify',
+    // 'cssmin',
+    // 'uglify',
+    // 'filerev',
+    // 'usemin',
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
