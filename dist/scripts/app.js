@@ -13,18 +13,13 @@ angular
     'ngAnimate',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'timer'
+    'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/admin', {
-        templateUrl: 'views/admin.html',
-        controller: 'AdminCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',

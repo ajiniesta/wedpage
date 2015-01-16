@@ -271,6 +271,34 @@
                         </ul>
                     </div>
                 </div>
-            </div>            
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Comentarios</h4>
+                    <p>Deja tus comentarios sobre la boda, confirmar tu asistencia, si tienes alguna alergia o petición en la comida, o simplemente nos quereis saludar. <span class="fa fa-smile-o"></span></p>
+                    <ul ng-repeat="it in awesomeThings">
+                        <li>{{it}}</li>
+                    </ul>
+                    <p>{{kk}}</p>
+                    <input ng-model="kk"/> 
+                    <p>{{greeting.id}} ----- {{greeting.content}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <form name="">
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control" placeholder="¿Quién?" title="Quien" />
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea class="form-control" placeholder="Escribir cualquier comentario" title="Comentario"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <input type="checkbox" name="" value=""/>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="submit" class="btn btn-primary pull-right" value="Enviar"/>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>

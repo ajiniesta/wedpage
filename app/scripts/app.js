@@ -9,11 +9,11 @@
  * Main module of the application.
  */
 angular
-  .module('wedpageApp', [
-    'ngAnimate',
+  .module('wedpageApp', [    
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    'ngAnimate'
+    // 'ngSanitize',
+    // 'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
