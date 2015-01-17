@@ -8,17 +8,18 @@
  * Controller of the wedpageApp
  */
 angular.module('wedpageApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$log', function ($scope, $log) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    $scope.data = {};
+    $scope.comment = {};
     $scope.greeting = {id : "1", content : "Here it's the content buddy"};
 
-    $scope.send = function (data) {
+    $scope.send = function (comment) {
       console.log("Sending info");
-      console.log(data);
+      console.log(comment); 
+      $log("Logging from object injected");
     };
-  });
+  } ]);
