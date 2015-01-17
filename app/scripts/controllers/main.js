@@ -14,7 +14,11 @@ angular.module('wedpageApp')
       'AngularJS',
       'Karma'
     ];
-
+    $scope.data = {};
     $scope.greeting = {id : "1", content : "Here it's the content buddy"};
 
+    $scope.send = function (data) {
+      console.log("Sending info");
+      console.log(data);
+    };
   });

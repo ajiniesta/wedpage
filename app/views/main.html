@@ -284,15 +284,12 @@
                     <p>{{greeting.id}} ----- {{greeting.content}}</p>
                 </div>
                 <div class="col-sm-6">
-                    <form name="">
+                    <form name="commentForm" ng-submit="commentForm.$valid && send(data)" novalidate>
                         <fieldset class="form-group">
-                            <input type="text" class="form-control" placeholder="¿Quién?" title="Quien" />
+                            <input ng-model="data.who" type="text" class="form-control" placeholder="¿Quién?" title="Quien" required/>
                         </fieldset>
                         <fieldset class="form-group">
-                            <textarea class="form-control" placeholder="Escribir cualquier comentario" title="Comentario"></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <input type="checkbox" name="" value=""/>
+                            <textarea ng-model = "data.comment" class="form-control" placeholder="Escribir cualquier comentario" title="Comentario" required></textarea>
                         </fieldset>
                         <fieldset class="form-group">
                             <input type="submit" class="btn btn-primary pull-right" value="Enviar"/>
