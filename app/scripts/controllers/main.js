@@ -25,4 +25,5 @@ angular.module('wedpageApp')
             $log.info(data);
         });
     };
+
   } ]);

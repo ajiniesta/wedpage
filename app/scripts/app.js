@@ -11,7 +11,8 @@
 angular
   .module('wedpageApp', [    
     'ngRoute',
-    'ngAnimate'
+    'ngAnimate',
+    'timer'
     // 'ngSanitize',
     // 'ngTouch'
   ])
