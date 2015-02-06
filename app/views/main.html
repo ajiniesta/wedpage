@@ -1,4 +1,4 @@
-
+<div ng-controller="MainCtrl">
     <!-- Header -->
     <header>
         <div class="container">
@@ -276,12 +276,12 @@
                 <div class="col-sm-6">
                     <h4>Comentarios</h4>
                     <p>Deja tus comentarios sobre la boda, confirmar tu asistencia, si tienes alguna alergia o petición en la comida, o simplemente nos quereis saludar. <span class="fa fa-smile-o"></span></p>
-                    <!--<ul ng-repeat="it in awesomeThings">
+                    <ul ng-repeat="it in awesomeThings">
                         <li>{{it}}</li>
                     </ul>
                     <p>{{kk}}</p>
                     <input ng-model="kk"/> 
-                    <p>{{greeting.id}} :: {{greeting.content}}</p> -->
+                    <p>{{greeting.id}} :: {{greeting.content}}</p> 
                 </div>
                 <div class="col-sm-6">
                     <form name="commentForm" class="form-horizontal" ng-submit="commentForm.$valid && send(comment)" novalidate>
@@ -351,3 +351,4 @@
             </div> 
         </div>
     </section>
+</div>
