@@ -3,12 +3,19 @@ var express = require('express');
 var morgan = require('morgan');
 var cool = require('cool-ascii-faces');
 var pg = require('pg');
+var bodyParser  = require("body-parser");
+var methodOverride = require("method-override");
 
 var app = express();
 
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(methodOverride());
 app.use(gzippo.staticGzip("" + __dirname + "/dist"));
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000, function () {
+  console.log("Node server running....");
+});
 
 app.get('/pg', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -21,4 +28,18 @@ app.get('/pg', function(request, response) {
       }
     });
   });
+});
+
+app.get('/test/:id', function(request, response) {
+  console.log("Param: "+request.params);
+  console.log("Body: "+request.body);
+  response.send("test...."+request.params.id);
+});
+
+app.post('/respuesta', function (request, response) {
+  console.log("Param: "+request.params);
+  console.log("Param1: "+request.body.param1);
+  console.log("Param2: "+request.body.param2);
+  console.log("Body: "+request.body);
+  response.send ('......\n');
 });
