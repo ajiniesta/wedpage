@@ -30,6 +30,21 @@ app.get('/pg', function(request, response) {
   });
 });
 
+app.get('/admin', function(request, response){
+  response.writeHeader(200, {"Content-Type": "text/html"});  
+  response.write('<html><head><title>Administration</title></head><body><h1>Administration</h1></body></html>');
+  response.end();
+});
+
+app.post('/save', function(request, response){
+  console.log("Saving new entry");
+  console.log("Param: "+request.params);
+  console.log("Param1: "+request.body.param1);
+  console.log("Param2: "+request.body.param2);
+  console.log("Body: "+request.body);
+  response.send();
+});
+
 app.get('/test/:id', function(request, response) {
   console.log("Param: "+request.params);
   console.log("Body: "+request.body);

@@ -19,11 +19,15 @@ angular.module('wedpageApp')
 
     $scope.send = function (comment) {
       $log.info('Send stuff {}', comment);
-      $http.get('http://rest-service.guides.spring.io/greeting').
-        success(function(data) {
-            $scope.greeting = data;
-            $log.info(data);
+      $http.post('/').
+        success(function(data, status, headers, config){
+
         });
+      // $http.get('http://rest-service.guides.spring.io/greeting').
+      //   success(function(data) {
+      //       $scope.greeting = data;
+      //       $log.info(data);
+      //   });
     };
 
   } ]);
