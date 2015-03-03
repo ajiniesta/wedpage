@@ -1,4 +1,4 @@
-
+<div ng-controller="MainCtrl">
     <!-- Header -->
     <header>
         <div class="container">
@@ -276,12 +276,12 @@
                 <div class="col-sm-6">
                     <h4>Comentarios</h4>
                     <p>Deja tus comentarios sobre la boda, confirmar tu asistencia, si tienes alguna alergia o petición en la comida, o simplemente nos quereis saludar. <span class="fa fa-smile-o"></span></p>
-                    <!--<ul ng-repeat="it in awesomeThings">
+                    <ul ng-repeat="it in awesomeThings">
                         <li>{{it}}</li>
                     </ul>
                     <p>{{kk}}</p>
                     <input ng-model="kk"/> 
-                    <p>{{greeting.id}} :: {{greeting.content}}</p> -->
+                    <p>{{greeting.id}} :: {{greeting.content}}</p> 
                 </div>
                 <div class="col-sm-6">
                     <form name="commentForm" class="form-horizontal" ng-submit="commentForm.$valid && send(comment)" novalidate>
@@ -307,47 +307,20 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="comments" class="col-sm-2 control-label">Comentarios</label>
+                            <label for="who" class="col-sm-2 control-label">¿Quién 2?</label>
                             <div class="col-sm-10">
-                                <textarea ng-model="comment.comment" class="form-control" id="comments" placeholder="Comentarios varios, alergias ..." rows="5" required>
+                                <input type="text" ng-model="comment.who3" class="form-control" id="who" placeholder="¿Quién?" required>
                             </div>
                         </div>
-                        
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <input type="submit" class="btn btn-primary" value="Enviar" />
                             </div>
                         </div>
-                        <!--<div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-10">
-                            <input ng-model="comment.email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Quién</label>
-                            <div class="col-sm-10">
-                            <input type="text" ng-model="comment.who" class="form-control" id="inputEmail3" placeholder="Quién">
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                    <input type="checkbox"> Remember me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <fieldset class="form-group">
-                            <label class="col-sm-2 control-label">Comentarios</label>
-                            <textarea ng-model = "comment.comment" class="form-control" placeholder="Escribir cualquier comentario" title="Comentario" required></textarea>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <input type="submit" class="btn btn-primary pull-right" value="Enviar"/>
-                            </div>                        
-                        </fieldset>-->
+
                     </form> 
                 </div>
             </div> 
         </div>
     </section>
+</div>

@@ -10,23 +10,24 @@
  */
 angular
   .module('wedpageApp', [    
-    'ngRoute',
+    //'ngRoute',
     'ngAnimate',
     'timer'
     // 'ngSanitize',
     // 'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  // .config(function ($routeProvider) {
+  //   $routeProvider
+  //     .when('/', {
+  //       templateUrl: 'views/main.html',
+  //       controller: 'MainCtrl'
+  //     })
+  //     .when('/about', {
+  //       templateUrl: 'views/about.html',
+  //       controller: 'AboutCtrl'
+  //     })
+  //     .otherwise({
+  //       redirectTo: '/'
+  //     });
+  //})
+;

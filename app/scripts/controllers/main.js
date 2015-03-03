@@ -15,15 +15,19 @@ angular.module('wedpageApp')
       'Karma'
     ];
     $scope.comment = {};
-    $scope.greeting = {id : "1", content : "Here it's the content buddy"};
+    $scope.greeting = {id : '1', content : 'Here it\'s the content buddy'};
 
     $scope.send = function (comment) {
-      $log.info("Send stuff {}", comment);
-      $http.get('http://rest-service.guides.spring.io/greeting').
-        success(function(data) {
-            $scope.greeting = data;
-            $log.info(data);
+      $log.info('Send stuff {}', comment);
+      $http.post('/').
+        success(function(data, status, headers, config){
+
         });
+      // $http.get('http://rest-service.guides.spring.io/greeting').
+      //   success(function(data) {
+      //       $scope.greeting = data;
+      //       $log.info(data);
+      //   });
     };
 
   } ]);
