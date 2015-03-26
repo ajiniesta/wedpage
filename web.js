@@ -18,15 +18,22 @@ app.listen(process.env.PORT || 5000, function () {
 });
 
 app.get('/pg', function(request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err){ 
-      	console.error(err); response.send("Error " + err); 
-      } else { 
-      	response.send(result.rows); 
-      }
-    });
+  console.log("where is the pg: " + process.env.HEROKU_POSTGRESQL_NAVY_URL);
+  console.log("pg? " + pg);
+  pg.connect(process.env.HEROKU_POSTGRESQL_NAVY_URL, function(err, client, done) {
+    console.log("err: " + err + " - client: " + client + " done: " + done);
+    if(client){
+        client.query('SELECT * FROM test_table', function(err, result) {
+        done();
+        if (err){ 
+        	console.error(err); response.send("Error " + err); 
+        } else { 
+        	response.send(result.rows); 
+        }
+      });
+    } else {
+      response.send("<h1>No Client</h1>");
+    }
   });
 });
 
@@ -56,5 +63,9 @@ app.post('/respuesta', function (request, response) {
   console.log("Param1: "+request.body.param1);
   console.log("Param2: "+request.body.param2);
   console.log("Body: "+request.body);
+  console.log("Who!!!" + request.body.who);
+  console.log("Email!!!" + request.body.email);
+  console.log("Assist!!!" + request.body.assist);
+  console.log("Who3!!!" + request.body.assist);
   response.send ('......\n');
 });

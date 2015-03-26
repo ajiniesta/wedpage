@@ -18,10 +18,13 @@ angular.module('wedpageApp')
     $scope.greeting = {id : '1', content : 'Here it\'s the content buddy'};
 
     $scope.send = function (comment) {
-      $log.info('Send stuff {}', comment);
-      $http.post('/').
+      $log.info('Send stuff to /respuesta', comment);
+      $http.post('/respuesta').
         success(function(data, status, headers, config){
-
+          $log.info('After post');
+        }).
+        error(function (data, status, headers, config) {
+          $log.error('Status returned: ' + status);
         });
       // $http.get('http://rest-service.guides.spring.io/greeting').
       //   success(function(data) {
