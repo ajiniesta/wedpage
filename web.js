@@ -63,7 +63,7 @@ app.post('/respuesta', function (request, response) {
   console.log("Param1: "+request.body.param1);
   console.log("Param2: "+request.body.param2);
   console.log("Body: "+request.body);
-  console.log("Who!!!" + request.body.who);
+  console.log("Who!!!" + request.body.who + " ------ " + request.params.who);
   console.log("Email!!!" + request.body.email);
   console.log("Assist!!!" + request.body.assist);
   console.log("Who3!!!" + request.body.assist);
