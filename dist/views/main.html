@@ -276,12 +276,12 @@
                 <div class="col-sm-6">
                     <h4>Comentarios</h4>
                     <p>Deja tus comentarios sobre la boda, confirmar tu asistencia, si tienes alguna alergia o petición en la comida, o simplemente nos quereis saludar. <span class="fa fa-smile-o"></span></p>
-                    <ul ng-repeat="it in awesomeThings">
+                    <!--<ul ng-repeat="it in awesomeThings">
                         <li>{{it}}</li>
                     </ul>
                     <p>{{kk}}</p>
                     <input ng-model="kk"/> 
-                    <p>{{greeting.id}} :: {{greeting.content}}</p> 
+                    <p>{{greeting.id}} :: {{greeting.content}}</p> -->
                 </div>
                 <div class="col-sm-6">
                     <form name="commentForm" class="form-horizontal" ng-submit="commentForm.$valid && send(comment)" novalidate>
@@ -307,9 +307,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="who" class="col-sm-2 control-label">¿Quién 2?</label>
+                            <label for="howmany" class="col-sm-2 control-label">¿Cuantos?</label>
                             <div class="col-sm-10">
-                                <input type="text" ng-model="comment.who3" class="form-control" id="who" placeholder="¿Quién?" required>
+                                <input type="number" ng-model="comment.howmany" class="form-control" id="howmany" placeholder="¿Cuantos?" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="allergies" class="col-sm-2 control-label">Alergias y comentarios</label>
+                            <div class="col-sm-10">
+                                <textarea ng-model="comment.allergies" class="form-control" id="allergies" placeholder="¿Alguna alergia? ¿Algún comentario?" rows="3" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">

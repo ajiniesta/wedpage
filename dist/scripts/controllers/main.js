@@ -19,7 +19,13 @@ angular.module('wedpageApp')
 
     $scope.send = function (comment) {
       $log.info('Send stuff to /respuesta', comment);
-      $http.post('/respuesta', {email:comment.email, who: comment.who}).
+      $http.post('/respuesta', 
+          { email:comment.email, 
+            who: comment.who, 
+            assist: comment.assist, 
+            howmany: comment.howmany,
+            allergies: comment.allergies
+          }).
         success(function(data, status, headers, config){
           $log.info('After post');
         }).

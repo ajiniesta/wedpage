@@ -66,6 +66,20 @@ app.post('/respuesta', function (request, response) {
   console.log("Who!!!" + request.body.who + " ------ " + request.params.who);
   console.log("Email!!!" + request.body.email);
   console.log("Assist!!!" + request.body.assist);
-  console.log("Who3!!!" + request.body.assist);
+  console.log("How Many!!!" + request.body.howmany);
+  console.log("Allergies!!!" + request.body.allergies);
   response.send ('......\n');
+  if(pg){
+    pg.connect(process.env.HEROKU_POSTGRESQL_NAVY_URL, function(err, client, done) {
+      console.log("err: " + err + " - client: " + client + " done: " + done);
+      if(client){
+          client.query('INSERT INTO comments(who, email, assist, number, allergies) VALUES ($1, $2, $3, $4, $5)',
+          [request.body.who, request.body.email, request.body.assist, request.body.howmany, request.body.allergies]);
+      } else {
+        response.send("<h1>No Client</h1>");
+      }
+    });
+  }else{
+    response.send("<h1>No Client</h1>");
+  }
 });
