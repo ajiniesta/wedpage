@@ -21,25 +21,30 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <table class="table table-stripped">
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>¿Van?</th>
-                <th>Quién</th>
-                <th>¿Cuantos?</th>
-                <th>Alergias...</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="comment in comments">
-                <td>{{comment.email}}</td>
-                <td>{{comment.assist}}</td>
-                <td>{{comment.who}}</td>
-                <td>{{comment.number}}</td>
-                <td>{{comment.allergies}}</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>¿Van?</th>
+                        <th>Quién</th>
+                        <th>¿Cuantos?</th>
+                        <th>Alergias...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="comment in comments">
+                        <td>{{comment.email}}</td>
+                        <td>{{comment.assist}}</td>
+                        <td>{{comment.who}}</td>
+                        <td>{{comment.number}}</td>
+                        <td>{{comment.allergies}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 </div>

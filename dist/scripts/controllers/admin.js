@@ -8,7 +8,7 @@
  * Controller of the wedpageApp
  */
 angular.module('wedpageApp')
-  .controller('AdminCtrl', function ($scope) {
+  .controller('AdminCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
   	$scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,4 +27,4 @@ angular.module('wedpageApp')
         });
     }
     
-  });
+  } ]);
