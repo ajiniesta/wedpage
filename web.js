@@ -5,6 +5,7 @@ var cool = require('cool-ascii-faces');
 var pg = require('pg');
 var bodyParser  = require("body-parser");
 var methodOverride = require("method-override");
+var fs = require('fs');
 
 var app = express();
 
@@ -21,7 +22,6 @@ app.get('/pg', function(request, response) {
   console.log("where is the pg: " + process.env.HEROKU_POSTGRESQL_NAVY_URL);
   console.log("pg? " + pg);
   pg.connect(process.env.HEROKU_POSTGRESQL_NAVY_URL, function(err, client, done) {
-    console.log("err: " + err + " - client: " + client + " done: " + done);
     if(client){
         client.query('SELECT * FROM test_table', function(err, result) {
         done();
@@ -38,9 +38,15 @@ app.get('/pg', function(request, response) {
 });
 
 app.get('/admin', function(request, response){
-  response.writeHeader(200, {"Content-Type": "text/html"});  
-  response.write('<html><head><title>Administration</title></head><body><h1>Administration</h1></body></html>');
-  response.end();
+  var fileName = "" + __dirname + "/dist/views/admin.html";
+  fs.readFile(fileName, function (err, html) {
+    if (err) {
+        throw err; 
+    }       
+    console.log("File " + fileName + " loaded.");
+    console.log(html);
+    response.send(html);
+  });
 });
 
 app.post('/save', function(request, response){
@@ -59,19 +65,8 @@ app.get('/test/:id', function(request, response) {
 });
 
 app.post('/respuesta', function (request, response) {
-  console.log("Param: "+request.params);
-  console.log("Param1: "+request.body.param1);
-  console.log("Param2: "+request.body.param2);
-  console.log("Body: "+request.body);
-  console.log("Who!!!" + request.body.who + " ------ " + request.params.who);
-  console.log("Email!!!" + request.body.email);
-  console.log("Assist!!!" + request.body.assist);
-  console.log("How Many!!!" + request.body.howmany);
-  console.log("Allergies!!!" + request.body.allergies);
-  response.send ('......\n');
   if(pg){
     pg.connect(process.env.HEROKU_POSTGRESQL_NAVY_URL, function(err, client, done) {
-      console.log("err: " + err + " - client: " + client + " done: " + done);
       if(client){
           client.query('INSERT INTO comments(who, email, assist, number, allergies) VALUES ($1, $2, $3, $4, $5)',
           [request.body.who, request.body.email, request.body.assist, request.body.howmany, request.body.allergies]);
@@ -82,4 +77,22 @@ app.post('/respuesta', function (request, response) {
   }else{
     response.send("<h1>No Client</h1>");
   }
+});
+
+app.get('/queries/getall', function(request, response) {
+  console.log("pg? " + pg);
+  pg.connect(process.env.HEROKU_POSTGRESQL_NAVY_URL, function(err, client, done) {
+    if(client){
+        client.query('SELECT * FROM comments', function(err, result) {
+        done();
+        if (err){ 
+          console.error(err); response.send("Error " + err); 
+        } else { 
+          response.send(result.rows); 
+        }
+      });
+    } else {
+      response.send("<h1>No Client</h1>");
+    }
+  });
 });
