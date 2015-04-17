@@ -38,24 +38,33 @@ app.get('/pg', function(request, response) {
 });
 
 app.get('/admin', function(request, response){
-  var fileName = "" + __dirname + "/dist/views/admin.html";
+  var fileName = "" + __dirname + "/dist/views/admin_template.html";
   fs.readFile(fileName, function (err, html) {
     if (err) {
         throw err; 
     }       
     console.log("File " + fileName + " loaded.");
-    console.log(html);
-    response.send(html);
+    response.set('Content-Type', 'text/html');
+    response.send(new Buffer(html));
+    response.end();
   });
 });
 
-app.post('/save', function(request, response){
-  console.log("Saving new entry");
-  console.log("Param: "+request.params);
-  console.log("Param1: "+request.body.param1);
-  console.log("Param2: "+request.body.param2);
-  console.log("Body: "+request.body);
-  response.send();
+app.get('/getcomments', function(request, response){
+  pg.connect(process.env.HEROKU_POSTGRESQL_NAVY_URL, function(err, client, done) {
+    if(client){
+        client.query('SELECT * FROM comments', function(err, result) {
+        done();
+        if (err){ 
+          console.error(err); response.send("Error " + err); 
+        } else { 
+          response.send(result.rows); 
+        }
+      });
+    } else {
+      response.send("<h1>No Client</h1>");
+    }
+  });
 });
 
 app.get('/test/:id', function(request, response) {
